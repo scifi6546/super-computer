@@ -19,3 +19,16 @@
       mount:
         path: "mount_dir"
         src: "192.168.0.127:{{remote_dir}}"
+        state: present
+        fstype: nfs
+      become: yes
+    - name: Install MPI
+      apt:
+        name: openmpi-bin
+        state: present
+      become: yes
+    - name: Install MPI-common
+      apt:
+        name: openmpi-common
+        state: present
+      become: yes
