@@ -1,5 +1,5 @@
 ---
-- hosts: compute master_node
+- hosts: compute
   name: Setup Compute Node
   remote_user: nick
   roles:
@@ -9,6 +9,8 @@
   remote_user: nick
   roles:
   - mpicc
+  - ansible_master
+  - mpi
 - hosts: storage
   name: Setup Storage Server
   remote_user: nick
