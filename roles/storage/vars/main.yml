@@ -1,0 +1,4 @@
+---
+  vars:
+    mount_dir: ~/cloud
+    remote_dir: /cloud
