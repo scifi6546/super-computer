@@ -26,3 +26,5 @@
         name: openmpi-common
         state: present
       become: yes
+    - name: Print CPU
+      debug: var=ansible_processor_count
