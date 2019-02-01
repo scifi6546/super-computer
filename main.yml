@@ -1,0 +1,39 @@
+---
+- hosts: storage
+  vars:
+    share_directory: /cloud
+  remote_user: nick
+  tasks:
+  - name: Install Python
+    apt:
+      name: python
+      state: present
+    become: yes
+  - name: Install NFS
+    apt: 
+      name: nfs-kernel-server
+      state: present
+    become: yes
+  - name: Make Shared Directory
+    file:
+      path: "{{share_directory}}"
+      state: directory
+      mode: 0775
+    become: yes
+  - name: Copy Exports File
+    copy:
+      src: exports
+      dest: /etc/exports
+      owner: root
+      group: root
+      mode: 0644
+    become: yes
+  - name: Start NFS
+    service:
+      name: nfs-kernel-server
+      state: started
+
+
+
+
+    
