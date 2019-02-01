@@ -1,0 +1,42 @@
+---
+  vars:
+    mount_dir: ~/cloud
+    remote_dir: /cloud
+  tasks:
+    - name: Install NFS
+      apt:
+        name: nfs-common
+        state: present
+      become: yes
+    - name: Make Mount Dir
+      file:
+        path: "{{mount_dir}}"
+        state: directory
+
+    - name: Mount
+      mount:
+        path: "mount_dir"
+        src: "192.168.0.127:{{remote_dir}}"
+        state: present
+        fstype: nfs
+      become: yes
+    - name: Install MPI
+      apt:
+        name: openmpi-bin
+        state: present
+      become: yes
+    - name: Install MPI-common
+      apt:
+        name: openmpi-common
+        state: present
+      become: yes
+    - name: Install MPIcc
+      apt:
+        name: mpi-default-dev
+        state: present
+      become: yes
+    - name: Install MPICH
+      apt:
+        name: mpich
+        state: present
+      become: yes

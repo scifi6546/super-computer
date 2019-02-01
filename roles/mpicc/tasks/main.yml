@@ -1,0 +1,11 @@
+---
+    - name: Install MPIcc
+      apt:
+        name: mpi-default-dev
+        state: present
+      become: yes
+    - name: Install MPICH
+      apt:
+        name: mpich
+        state: present
+      become: yes
