@@ -1,0 +1,13 @@
+---
+- name: install java
+  apt:
+    name: default-jre
+    state: present
+  become: yes
+- name: Download Jenkins
+  get_url:
+     url: http://mirrors.jenkins.io/war/latest/jenkins.war 
+     dest: ~/jenkins.war
+- name: Run Jenkins
+  shell: "java -jar jenkins.war"
+

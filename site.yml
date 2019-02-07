@@ -16,3 +16,8 @@
   remote_user: nick
   roles:
   - storage
+- hosts: testing
+  name: Setup Testing Server
+  remote_user: nick
+  roles:
+  - test-server
